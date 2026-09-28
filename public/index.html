@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4e9">
+  <meta name="description" content="Маленькая лягушка. Большая охота на баги. Лови жуков языком и ставь рекорды!">
+  <title>QA QA — охота на баги</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/game.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <a class="brand" href="/" aria-label="QA QA — главная"><span class="brand-icon">q.</span><span>qa qa<span class="brand-dot">.</span></span></a>
+      <span class="edition">МАЛЕНЬКАЯ ИГРА ДЛЯ БОЛЬШОГО ПЕРЕРЫВА</span>
+      <button class="sound-button" id="sound" aria-pressed="true" aria-label="Выключить звук"><span id="sound-icon">♫</span><span id="sound-label">Звук вкл.</span></button>
+    </header>
+    <section class="intro">
+      <div><div class="eyebrow"><span></span> БАГИ САМИ СЕБЯ НЕ ПОЙМАЮТ</div><h1>Охота на <em>баги.</em></h1><p>Ты кликаешь. Лягушка ловит. Мир становится чуточку лучше.</p></div>
+      <div class="best"><span class="best-star">✧</span><div><span>ЛИЧНЫЙ РЕКОРД</span><strong id="best">0 <small>жуков</small></strong></div></div>
+    </section>
+    <section class="game-shell" aria-label="Игра: охота на жуков">
+      <div class="hud">
+        <div class="score-block"><span class="hud-label">ПОЙМАНО</span><strong><span id="score">0</span><small> жуков</small></strong></div>
+        <div class="round-state"><span class="status-dot"></span><span id="status">Пруд ждёт своего героя</span></div>
+        <div class="timer-block"><span class="hud-label">ОСТАЛОСЬ</span><strong id="timer">01:00</strong></div>
+        <button class="icon-button" id="pause" aria-label="Пауза" disabled>Ⅱ</button>
+      </div>
+      <div class="scene" id="scene">
+        <div class="sun"></div><div class="cloud cloud-one"></div><div class="cloud cloud-two"></div>
+        <div class="far-bank"></div><div class="near-bank"></div><div class="pond"></div>
+        <div class="ripple ripple-one"></div><div class="ripple ripple-two"></div>
+        <div class="lily lily-one"></div><div class="lily lily-two"></div><div class="lily lily-three"></div>
+        <div class="reeds reeds-left"><i></i><i></i><i></i><i></i><i></i></div><div class="reeds reeds-right"><i></i><i></i><i></i><i></i></div>
+        <div class="rock"></div>
+        <div class="frog-wrap" id="frog-wrap"><img class="frog" id="frog" src="/assets/frog.png" alt="Зелёная лягушка с надписью qa на животе" draggable="false"><span class="speech" id="speech" aria-live="polite">qa qa!</span></div>
+        <svg class="tongue-layer" id="tongue-layer" aria-hidden="true"><path id="tongue-shadow"/><path id="tongue"/><path id="tongue-shine"/></svg>
+        <div id="bugs" class="bugs"></div><div id="effects" class="effects" aria-hidden="true"></div>
+        <div class="scene-caption"><span></span> ПРУД БЕЗ КРИТИЧЕСКИХ ОШИБОК</div>
+        <div class="overlay" id="overlay">
+          <div class="start-card"><span class="card-kicker" id="card-kicker">ТВОЙ ЛИЧНЫЙ QA-ОТДЕЛ</span><h2 id="card-title">Пора подкрепиться.</h2><p id="card-description">Лови жуков за 60 секунд.<br>Нажимай на них — остальное лягушка сделает сама.</p><button class="play-button" id="play" disabled>Готовим пруд…</button><span class="card-note" id="card-note">Мышкой или пальцем. С аппетитом.</span></div>
+        </div>
+      </div>
+      <div class="progress-track"><div id="progress"></div></div>
+      <footer class="game-footer"><span><span class="hint-icon">↖</span> Нажимай на жуков, чтобы их поймать</span><span id="combo">Каждый баг — маленькая победа</span></footer>
+    </section>
+    <section class="how-to" aria-label="Как играть"><div><b>01</b><p><strong>Найди баг</strong><span>Они летают прямо над прудом.</span></p></div><div><b>02</b><p><strong>Поймай момент</strong><span>Один клик — и язык уже в деле.</span></p></div><div><b>03</b><p><strong>Услышь «qa qa»</strong><span>Так звучит довольный тестировщик.</span></p></div></section>
+    <footer class="page-footer"><span>Сделано для тех, кто замечает баги.</span><span>Ни один настоящий жук не пострадал <span class="tiny-leaf">❧</span></span></footer>
+    <div class="sr-only" aria-live="polite" id="announcement"></div>
+  </main>
+</body>
+</html>

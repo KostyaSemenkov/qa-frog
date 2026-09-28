@@ -1,0 +1,9 @@
+{
+  "name": "qa-frog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "QA QA — a little bug-catching browser game",
+  "scripts": { "start": "node server.mjs", "test": "node --test" },
+  "engines": { "node": ">=22" }
+}

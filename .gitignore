@@ -1,0 +1,6 @@
+.docker-local/
+node_modules/
+*.log
+*.tar
+test-results/
+docs/reference.png
