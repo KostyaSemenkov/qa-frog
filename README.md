@@ -28,38 +28,6 @@ docker run --rm --name qa-frog -p 8080:8080 qa-frog:1.0.0
 
 Образ использует Node 24 Alpine, пользователя node с UID 1000, слушает `0.0.0.0:$PORT` (по умолчанию 8080), возвращает `200` на `/health`, корректно обрабатывает SIGTERM. Нет базы данных, volumes, runtime npm-зависимостей или внешних CDN. В образ попадают только сервер и public; документы, скриншоты и локальные настройки исключены.
 
-## Cloud.ru Container Apps
-
-1. В Artifact Registry целевого проекта выберите реестр и выполните аутентификацию по инструкции Cloud.ru. Секрет передавайте Docker через `--password-stdin`, не сохраняйте его в исходниках.
-2. Присвойте образу имя реестра и загрузите новый репозиторий:
-
-```powershell
-$registry = 'YOUR-REGISTRY.cr.cloud.ru'
-docker tag qa-frog:1.0.0 "${registry}/qa-frog:1.0.0"
-docker push "${registry}/qa-frog:1.0.0"
-```
-
-3. В Container Apps → Container Services → Создать укажите:
-
-| Параметр | Значение |
-| --- | --- |
-| Название | qa-frog |
-| Образ | YOUR-REGISTRY.cr.cloud.ru/qa-frog:1.0.0 |
-| Порт | 8080 |
-| Конфигурация | 0.1 vCPU, 256 MB |
-| Привилегированный режим | выключен |
-| Минимум / максимум экземпляров | 0 / 1 |
-| HTTP health probe | GET /health, порт 8080 |
-| Request timeout | 30 секунд |
-| Публичный адрес | включён, если игра должна открываться без входа в Cloud.ru |
-
-Не задавайте `PORT` вручную в переменных Cloud.ru: платформа формирует его из поля «Порт». Команду точки входа и аргументы оставьте пустыми. Используйте новый тег для последующих версий. Стоимость зависит от ресурсов, запросов и времени работы; масштабирование до нуля уменьшает время простоя, но не гарантирует бесплатность.
-
-Официальные инструкции:
-- https://cloud.ru/docs/container-apps-evolution/ug/topics/concepts__image-requirements
-- https://cloud.ru/docs/container-apps-evolution/ug/topics/guides__container-create
-- https://cloud.ru/docs/artifact-registry-evolution/ug/topics/guides__artifact-push
-
 ## Состав
 
 - `public/` — игра, стили, спрайты; `round.js` — состояние раунда.
